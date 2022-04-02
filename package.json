@@ -1,0 +1,16 @@
+{
+  "name": "ui-components",
+  "version": "0.0.0",
+  "description": "ui-components for taska project",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://micromagicman@bitbucket.org/micromagicman/ui-components.git"
+  },
+  "author": "micromagicman",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/micromagicman/ui-components#readme",
+  "dependencies": {
+    "react": "^18.0.0"
+  }
+}
