@@ -13,7 +13,7 @@
     display: none;
   }
 
-  label {
+  .ui__label {
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -47,7 +47,7 @@
   }
 
   &--checked input {
-    & + label {
+    & + .ui__label {
       &::before {
         border-color: lighten(@checkbox-normal-color, 10%);
       }
@@ -59,7 +59,7 @@
   }
 
   &--disabled input {
-    & + label {
+    & + .ui__label {
       color: @checkbox-disabled-color;
 
       &::before {
