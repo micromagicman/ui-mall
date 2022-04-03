@@ -2,15 +2,43 @@
   "name": "ui-components",
   "version": "0.0.0",
   "description": "ui-components for taska project",
-  "main": "src/index.js",
+  "main": "dist/ui-components.js",
   "repository": {
     "type": "git",
     "url": "git+https://micromagicman@bitbucket.org/micromagicman/ui-components.git"
   },
+  "scripts": {
+    "dev": "./node_modules/.bin/webpack --mode=development --watch",
+    "build": "./node_modules/.bin/webpack --mode=production"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ],
   "author": "micromagicman",
-  "license": "ISC",
   "homepage": "https://bitbucket.org/micromagicman/ui-components#readme",
   "dependencies": {
+    "classnames": "^2.3.1",
     "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "autoprefixer": "^10.4.4",
+    "babel-loader": "^8.2.4",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
+    "postcss-loader": "^6.2.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.71.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/env",
+      "@babel/react"
+    ]
   }
 }
