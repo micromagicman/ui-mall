@@ -12,6 +12,14 @@ module.exports = (env, argv) => ({
             : '[name].development.js',
         libraryTarget: 'umd'
     },
+    externals: {
+        react: {
+            commonjs: 'react',
+            commonjs2: 'react',
+            amd: 'React',
+            root: 'React'
+        }
+    },
     module: {
         rules: [
             {

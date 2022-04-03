@@ -1,0 +1,25 @@
+@input-non-focused-color: #cecece;
+@input-focused-color: #343434;
+
+.ui__input {
+  &--text, &--password, &--textarea {
+    outline: none;
+    box-shadow: 0 5px 5px -4px rgba(51, 51, 51, .75);
+    border-radius: 2px;
+    padding: 0.5rem;
+    border: 2px solid @input-non-focused-color;
+    background-color: lighten(@input-non-focused-color, 30%);
+
+    &:focus {
+      border-color: @input-focused-color;
+      background-color: #ffffff;
+    }
+  }
+
+  &--textarea {
+    width: 100%;
+    display: block;
+    min-height: 300px;
+    resize:none;
+  }
+}

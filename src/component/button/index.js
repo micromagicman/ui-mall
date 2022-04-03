@@ -3,11 +3,11 @@ import classNames from 'classnames';
 
 import './style.less';
 
-const BUTTON_TYPES = ['normal', 'warning', 'error', 'success'];
+export const BUTTON_TYPES = ['normal', 'warning', 'error', 'success'];
 
 const handleType = (type) => ~BUTTON_TYPES.indexOf(type) ? type : 'normal';
 
-const Button = ({onClick, text, disabled, children, type}) => {
+export default ({onClick, text, disabled, children, type, ...rest}) => {
     const className = classNames(
         'ui__button',
         `ui__button--${handleType(type)}`,
@@ -16,10 +16,9 @@ const Button = ({onClick, text, disabled, children, type}) => {
     return (
         <button
             className={className}
-            onClick={() => !disabled && onClick()}>
+            onClick={() => !disabled && onClick()}
+            {...rest}>
             {text || children}
         </button>
     );
 };
-
-export {Button, BUTTON_TYPES};

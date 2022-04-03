@@ -17,7 +17,9 @@
   "author": "micromagicman",
   "homepage": "https://bitbucket.org/micromagicman/ui-components#readme",
   "dependencies": {
-    "classnames": "^2.3.1",
+    "classnames": "^2.3.1"
+  },
+  "peerDependencies": {
     "react": "^18.0.0"
   },
   "devDependencies": {
