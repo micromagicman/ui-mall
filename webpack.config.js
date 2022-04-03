@@ -9,7 +9,7 @@ module.exports = (env, argv) => ({
         path: path.resolve(__dirname, 'dist'),
         filename: argv.mode === 'production'
             ? '[name].js'
-            : '[name].js',
+            : '[name].development.js',
         libraryTarget: 'umd'
     },
     module: {
