@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import classNames from 'classnames';
 
 import {CheckInput} from '../input';
+import Label from '../text/label';
 
 import './style.less';
 
@@ -26,7 +27,7 @@ export default ({label, children, checked, disabled, onChange, ...rest}) => {
              onClick={() => !disabled && onChangeHandler()}
              {...rest}>
             <CheckInput checked={checkedState} disabled={disabled}/>
-            <label>{label || children}</label>
+            <Label>{label || children}</Label>
         </div>
     );
 };
