@@ -38,6 +38,19 @@ module.exports = (env, argv) => ({
                     'less-loader'
                 ]
             },
+            {
+                test: /(png|svg|gif|jpe?g)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'img/'
+                        }
+                    },
+                    'image-webpack-loader'
+                ]
+            }
         ]
     },
     plugins: [
