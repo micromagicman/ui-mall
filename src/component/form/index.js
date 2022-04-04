@@ -1,14 +1,14 @@
 import React from 'react';
 import Label from '../text/label';
 import Button from '../button';
-import {ComponentLoadable} from '../loadable';
+import {FilteredLoadable} from '../loadable';
 
 export default ({
                     disabled, onSubmit, onDelete, loading, children,
                     saveText = 'Сохранить', deleteText = 'Удалить',
                     ...rest
                 }) => (
-    <ComponentLoadable filter={true} loading={loading}>
+    <FilteredLoadable loading={loading}>
         <div className='ui__form' {...rest}>
             {children}
             <Button disabled={disabled}
@@ -25,7 +25,7 @@ export default ({
                     : null
             }
         </div>
-    </ComponentLoadable>
+    </FilteredLoadable>
 );
 
 export const FormLine = ({caption, children}) => (

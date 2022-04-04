@@ -2,7 +2,9 @@ import React from 'react';
 
 import defaultLoadingIcon from '../../img/loaders/puff.svg';
 
-export const Spinner = ({loader}) => <img src={loader ? loader : defaultLoadingIcon} alt='loading'/>;
+export const Spinner = ({loader, ...rest}) => (
+    <img src={loader ? loader : defaultLoadingIcon} alt='loading' {...rest}/>
+);
 
 /**
  * @param LoadingComponent - uppercase требует REACT!
