@@ -7,15 +7,16 @@ export const BUTTON_TYPES = ['normal', 'warning', 'error', 'success'];
 
 const handleType = (type) => ~BUTTON_TYPES.indexOf(type) ? type : 'normal';
 
-export default ({onClick, text, disabled, children, type, ...rest}) => {
-    const className = classNames(
+export default ({onClick, text, disabled, children, type, className, ...rest}) => {
+    const classNames = classNames(
         'ui__button',
         `ui__button--${handleType(type)}`,
         {'ui__button--disabled': disabled},
+        className
     );
     return (
         <button
-            className={className}
+            className={classNames}
             onClick={() => !disabled && onClick()}
             {...rest}>
             {text || children}
