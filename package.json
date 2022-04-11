@@ -10,7 +10,7 @@
     "url": "git+https://micromagicman@bitbucket.org/micromagicman/ui-components.git"
   },
   "scripts": {
-    "dev": "./node_modules/.bin/webpack --mode=development --watch",
+    "dev": "rollup -c -w",
     "build": "rollup -c"
   },
   "browserslist": [
