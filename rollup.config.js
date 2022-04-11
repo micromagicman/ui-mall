@@ -5,6 +5,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import postcss from 'rollup-plugin-postcss';
 import svg from 'rollup-plugin-svg';
 import del from 'rollup-plugin-delete';
+import autoprefixer from 'autoprefixer';
 
 import pkg from './package.json';
 
@@ -30,8 +31,9 @@ export default {
         }),
         svg(),
         postcss({
+            plugins: [autoprefixer()],
             minimize: true,
-            modules: true,
+            modules: false,
             use: {
                 sass: null,
                 stylus: null,
