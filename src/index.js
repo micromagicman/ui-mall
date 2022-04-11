@@ -5,7 +5,7 @@ import {TextInput, PasswordInput, TextArea} from './component/input';
 import FileUploader from './component/file-uploader';
 import Form, {FormLine} from './component/form';
 import {FilteredLoadable, ComponentLoadable, Spinner} from './component/loadable';
-import Modal, {ConfirmModal, InfoModal} from "./component/modal";
+import Modal, {ConfirmModal, InfoModal} from './component/modal';
 
 export {
     // constants
