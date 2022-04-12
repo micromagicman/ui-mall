@@ -14,19 +14,27 @@ const Input = ({value, onChange, name, type, ...rest}) => (
            {...rest}/>
 );
 
-export const TextInput = ({...props}) => <Input type='text' {...props}/>;
+const TextInput = ({...props}) => <Input type='text' {...props}/>;
 
-export const PasswordInput = ({value, onChange, ...rest}) => <Input type='password' {...rest}/>;
+const PasswordInput = ({value, onChange, ...rest}) => <Input type='password' {...rest}/>;
 
-export const CheckInput = ({checked, ...rest}) => (
+const CheckInput = ({checked, ...rest}) => (
     <input type='checkbox'
            checked={checked}
            {...rest}/>
 );
 
-export const TextArea = ({value, onChange, name, ...rest}) => (
+const RadioInput = ({checked, ...rest}) => (
+    <Input type='radio'
+           checked={checked}
+           {...rest}/>
+);
+
+const TextArea = ({value, onChange, name, ...rest}) => (
     <textarea value={value}
               className={`ui__input ui__input--textarea`}
               onChange={onTextInputValueChange(name, onChange)}
               {...rest}/>
 );
+
+export {TextInput, PasswordInput, CheckInput, RadioInput, TextArea};

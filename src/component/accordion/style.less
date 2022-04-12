@@ -1,0 +1,35 @@
+.ui__accordion {
+
+  &-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    background-color: #565656;
+    border: 1px solid #454545;
+    border-radius: 2px;
+    color: #ffffff;
+    transition: 0.3s ease background-color;
+
+    & > .ui__label {
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+  }
+
+  &--expanded {
+    .ui__accordion-header {
+      background-color: #343434;
+      border-color: #121212;
+    }
+
+    .ui__accordion-content {
+      max-height: 25rem;
+    }
+  }
+
+  &-content {
+    max-height: 0;
+    transition: max-height 0.5s linear;
+  }
+}
