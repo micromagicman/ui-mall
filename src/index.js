@@ -11,6 +11,8 @@ import FileUploader from './component/file-uploader';
 import Form, {FormLine} from './component/form';
 import {ComponentLoadable, FilteredLoadable, Spinner} from './component/loadable';
 import Modal, {ConfirmModal, InfoModal} from './component/modal';
+import Tree from './component/tree';
+import Multitab from './component/multitab';
 
 export {
     // constants
@@ -19,5 +21,5 @@ export {
     Button, CheckBox, TextInput, PasswordInput, TextArea, FileUploader, Label,
     Form, FormLine, FilteredLoadable, ComponentLoadable, Spinner, Modal,
     ConfirmModal, InfoModal, EditableLabel, Accordion, Select, RadioGroup,
-    Arrow
+    Arrow, Tree, Multitab
 };

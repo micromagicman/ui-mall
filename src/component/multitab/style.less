@@ -1,0 +1,33 @@
+@tab-selected-color: #00ccbf;
+
+.ui__multitab {
+  &-tab-content {
+    display: none;
+    &--active {
+      display: block;
+    }
+  }
+
+  &-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &-tab {
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid transparent;
+
+    &--active {
+      border-bottom-color: darken(@tab-selected-color, 6%);
+      color: darken(@tab-selected-color, 6%);
+    }
+
+    &-pane {
+      padding: 0 1rem;
+    }
+  }
+}

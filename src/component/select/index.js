@@ -20,7 +20,7 @@ const shiftSelectedItem = (values, searchId) => {
 };
 
 export default ({values, activeId, onChange, selectiveComponent, className, ...rest}) => {
-    const [selectedId, changeSelected] = useSingleChoice({activeId, onChange});
+    const [selectedId, changeSelected] = useSingleChoice(activeId, onChange);
     const [{classAttr, isExpanded}, toggleExpand] = useExpandStyle({
         expanded: false,
         mainClassName: 'ui__select',
