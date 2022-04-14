@@ -7,8 +7,7 @@ import Label from '../text/label';
 import './style.less';
 
 export default ({values, activeId, onChange, ...rest}) => {
-    const [active, changeActive] = useSingleChoice({activeId, onChange});
-    console.log(active, values);
+    const [active, changeActive] = useSingleChoice(activeId, onChange);
     return (
         <div className='ui__radio-group' {...rest}>
             {values.map((v) =>
