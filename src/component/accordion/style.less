@@ -1,3 +1,5 @@
+@accordion-header-color: #3F7C85;
+
 .ui__accordion {
 
   &-header {
@@ -5,8 +7,9 @@
     align-items: center;
     cursor: pointer;
     padding: 0.5rem;
-    background-color: #565656;
-    border: 1px solid #454545;
+    background-color: darken(@accordion-header-color, 5%);
+    border: 1px solid darken(@accordion-header-color, 8%);
+
     border-radius: 2px;
     color: #ffffff;
     transition: 0.3s ease background-color;
@@ -19,11 +22,12 @@
 
   &--expanded {
     .ui__accordion-header {
-      background-color: #343434;
-      border-color: #121212;
+      background-color: @accordion-header-color;
+      border-color: darken(@accordion-header-color, 3%);
     }
 
     .ui__accordion-content {
+      overflow: visible;
       max-height: 25rem;
     }
   }

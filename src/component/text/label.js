@@ -1,7 +1,8 @@
 import React from 'react';
+import classNames from 'classnames';
 
-export default ({children, ...rest}) => (
-    <span className='ui__label'
+export default ({children, className, ...rest}) => (
+    <span className={classNames('ui__label', className)}
           {...rest}>
         {children}
     </span>

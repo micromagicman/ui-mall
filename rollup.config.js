@@ -3,7 +3,7 @@ import external from 'rollup-plugin-peer-deps-external';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import postcss from 'rollup-plugin-postcss';
-import svg from 'rollup-plugin-svg';
+import image from 'rollup-plugin-img';
 import del from 'rollup-plugin-delete';
 import autoprefixer from 'autoprefixer';
 
@@ -29,7 +29,12 @@ export default {
             mainFields: ['module', 'main', 'jsnext:main', 'browser'],
             extensions
         }),
-        svg(),
+        image({
+            output: 'dist/images',
+            extensions: /\.(png|jpg|jpeg|gif|svg)$/,
+            limit: 8192,
+            exclude: 'node_modules/**'
+        }),
         postcss({
             plugins: [autoprefixer()],
             minimize: true,
