@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useRef} from 'react';
 
 import Arrow from '../graphics/arrow';
 import Label from '../text/label';
 import useExpandStyle from '../../hooks/expanded';
 import useSingleChoice from '../../hooks/single-choice';
+import useOutsideClick from '../../hooks/outside-click';
 
 import './style.less';
 
@@ -19,17 +20,18 @@ const shiftSelectedItem = (values, searchId) => {
     return [selectedItem, ...others];
 };
 
-export default ({values, activeId, onChange, selectiveComponent, className, ...rest}) => {
+export default ({values, activeId, onChange, optionComponent, className, ...rest}) => {
+    const rootRef = useRef(null);
     const [selectedId, changeSelected] = useSingleChoice(activeId, onChange);
-    const [{classAttr, isExpanded}, toggleExpand] = useExpandStyle({
-        expanded: false,
-        mainClassName: 'ui__select',
-        className
-    });
-    const OptionComponent = selectiveComponent || DefaultOptionComponent;
+    const [{classAttr, isExpanded}, toggleExpand] = useExpandStyle({expanded: false, mainClassName: 'ui__select', className});
+    const OptionComponent = optionComponent || DefaultOptionComponent;
     const [selectedItem, ...options] = shiftSelectedItem(values, selectedId);
+    useOutsideClick([rootRef, isExpanded], () => isExpanded && toggleExpand());
     return (
-        <div className={classAttr} {...rest} onClick={toggleExpand}>
+        <div className={classAttr}
+             onClick={toggleExpand}
+             ref={rootRef}
+             {...rest}>
             <div className='ui__select-head'>
                 <Arrow color='#343434' direction={isExpanded ? 'up' : 'down'}/>
                 <OptionComponent {...selectedItem}

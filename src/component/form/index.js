@@ -29,8 +29,12 @@ export default ({
 );
 
 export const FormLine = ({caption, children}) => (
-    <div className='ui__form__line'>
-        <Label>{caption}</Label>
-        {children}
+    <div className='ui__form-line'>
+        <div className='ui__form-line-level'>
+            <Label>{caption}</Label>
+        </div>
+        <div className='ui__form-line-level'>
+            {children}
+        </div>
     </div>
 );
