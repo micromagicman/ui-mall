@@ -1,7 +1,7 @@
 {
-  "name": "ui-components",
-  "version": "0.0.0",
-  "description": "ui-components for taska project",
+  "name": "@micromagicman/react-components",
+  "version": "0.1.0",
+  "description": "react ui-components library",
   "source": "src/index.js",
   "main": "dist/ui-components.js",
   "module": "dist/ui-components.esm.js",
