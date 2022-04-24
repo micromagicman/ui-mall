@@ -1,6 +1,7 @@
 {
-  "name": "@micromagicman/react-components",
-  "version": "0.1.0",
+  "name": "react-ui-comps",
+  "version": "0.1.1",
+  "private": false,
   "description": "react ui-components library",
   "source": "src/index.js",
   "main": "dist/ui-components.js",
