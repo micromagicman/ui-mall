@@ -1,7 +1,6 @@
 {
   "name": "react-ui-comps",
   "version": "0.1.1",
-  "private": false,
   "description": "react ui-components library",
   "source": "src/index.js",
   "main": "dist/ui-components.js",
@@ -50,5 +49,6 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "style-loader": "^3.3.1"
-  }
+  },
+  "files": ["dist"]
 }
