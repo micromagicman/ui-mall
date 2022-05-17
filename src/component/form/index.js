@@ -3,6 +3,8 @@ import Label from '../text/label';
 import Button from '../button';
 import {FilteredLoadable} from '../loadable';
 
+import './style.less';
+
 export default ({
                     disabled, onSubmit, onDelete, loading, children,
                     saveText = 'Сохранить', deleteText = 'Удалить',

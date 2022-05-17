@@ -1,6 +1,6 @@
 {
   "name": "react-ui-comps",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "react ui-components library",
   "source": "src/index.js",
   "main": "dist/ui-components.js",
