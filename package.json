@@ -1,6 +1,6 @@
 {
   "name": "react-ui-comps",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "react ui-components library",
   "source": "src/index.js",
   "main": "dist/ui-components.js",
@@ -52,6 +52,7 @@
     "style-loader": "^3.3.1"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ]
 }

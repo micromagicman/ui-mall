@@ -7,6 +7,7 @@
   cursor: pointer;
 
   &-input {
+    position: relative;
     & > .ui__input {
       width: 100%;
       box-sizing: border-box;
@@ -20,6 +21,18 @@
         background-color: #fafafa;
       }
     }
+  }
+
+  &-selection {
+    overflow: hidden;
+    max-width: calc(100% - 0.6rem);
+    font-size: 0.8rem;
+    position: absolute;
+    top: 0.3rem;
+    left: 0.3rem;
+    background-color: #aeaeae;
+    color: #343434;
+    padding: 0.2rem 0.5rem;
   }
 
   &-matches {
