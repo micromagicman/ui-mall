@@ -8,20 +8,43 @@ import './style.less';
 
 const DEFAULT_NOT_FOUND_TEXT = 'Совпадений не найдено';
 
-export default ({matchesProvider, onMatchClick, notFoundText = DEFAULT_NOT_FOUND_TEXT, MatchComponent = DefaultMatchComponent}) => {
-    const [query, onQueryChange] = useState(null);
-    const [matches, onMatchesChange] = useState([]);
+const SelectedMatch = ({text, ...rest}) =>
+    <div className='ui__search-selection' {...rest}>
+        <Label>{text}</Label>
+    </div>
+
+export default ({
+                    matchesProvider,
+                    onMatchClick = () => {},
+                    onMatchSelectionReset = () => {},
+                    notFoundText = DEFAULT_NOT_FOUND_TEXT,
+                    MatchComponent = DefaultMatchComponent
+                }) => {
+    const [query, changeQuery] = useState(null);
+    const [matches, matchesChange] = useState([]);
     const [loading, toggleLoading] = useState(false);
+    const [matchSelection, selectMatch] = useState(null);
+
+    const onMatchSelectionResetHandler = () => {
+        onMatchSelectionReset();
+        selectMatch(null);
+    };
+
+    const onMatchClickHandler = (match) => {
+        selectMatch(match);
+        changeQuery('');
+        onMatchClick(match);
+    };
 
     const onInputTextChange = (_, text) => {
-        onQueryChange(text);
+        changeQuery(text);
         if (('string' === typeof text) && text.length) {
             toggleLoading(true);
             matchesProvider(text)
-                .then(onMatchesChange)
+                .then(matchesChange)
                 .finally(() => toggleLoading(false));
         } else {
-            onMatchesChange([]);
+            matchesChange([]);
         }
     };
 
@@ -34,14 +57,19 @@ export default ({matchesProvider, onMatchClick, notFoundText = DEFAULT_NOT_FOUND
             );
         }
         return matches.length
-            ? matches.map((v) => <MatchComponent onClick={() => onMatchClick(v)} {...v} />)
+            ? matches.map((v, i) => <MatchComponent key={i} onClick={() => onMatchClickHandler(v)} {...v} />)
             : <DefaultMatchComponent className='ui__label--not-found' text={notFoundText}/>;
     };
 
     return (
         <div className='ui__search'>
             <div className='ui__search-input'>
-                <TextInput value={query} onChange={onInputTextChange}/>
+                <TextInput disabled={!!matchSelection} value={query} onChange={onInputTextChange}/>
+                {matchSelection && (
+                    <SelectedMatch
+                        onClick={onMatchSelectionResetHandler}
+                        {...matchSelection} />
+                )}
             </div>
             {query && <div className='ui__search-matches'>{renderMatches()}</div>}
         </div>

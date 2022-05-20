@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {TextInput} from '../input';
+import Label from './label';
 import Button from '../button';
 import useEditableMode from '../../hooks/editable-mode';
 
@@ -28,10 +29,10 @@ export default ({children, onSave, ...rest}) => {
     }
 
     return (
-        <span className='ui__editable-label'
-              onClick={() => toggleEditMode(true)}
-              {...rest}>
-          {children}
-        </span>
+        <Label className='ui__editable-label'
+               onClick={() => toggleEditMode(true)}
+               {...rest}>
+            {children}
+        </Label>
     );
 };

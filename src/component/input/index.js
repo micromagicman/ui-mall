@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {emptyIfAbsent} from '../../util/string';
+
 import './style.less';
 
 const onTextInputValueChange = (name, onChange) => {
@@ -9,7 +11,7 @@ const onTextInputValueChange = (name, onChange) => {
 const Input = ({value, onChange, name, type, ...rest}) => (
     <input type={type}
            onChange={onTextInputValueChange(name, onChange)}
-           value={value}
+           value={emptyIfAbsent(value)}
            className={`ui__input ui__input--${type}`}
            {...rest}/>
 );
@@ -21,6 +23,7 @@ const PasswordInput = ({value, onChange, ...rest}) => <Input type='password' {..
 const CheckInput = ({checked, ...rest}) => (
     <input type='checkbox'
            checked={checked}
+           readOnly={true}
            {...rest}/>
 );
 

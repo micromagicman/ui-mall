@@ -13,12 +13,14 @@ export default ({title, children, expanded, className, ...rest}) => {
         className
     });
     return (
-        <div className={classAttr} {...rest}>
-            <div className='ui__accordion-header' onClick={toggleExpand}>
+        <details open={expanded}
+                 className={classAttr}
+                 {...rest}>
+            <summary className='ui__accordion-header' onClick={toggleExpand}>
                 <Arrow direction={isExpanded ? 'down' : 'right'} color='white'/>
                 {title && <Label>{title}</Label>}
-            </div>
+            </summary>
             <div className='ui__accordion-content'>{children}</div>
-        </div>
+        </details>
     );
 };
