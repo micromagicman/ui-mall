@@ -6,14 +6,14 @@
   position: relative;
   &__label,
   &__options {
+    z-index: 10000;
     background-color: @dropdown-background-color;
     border: 1px solid @dropdown-border-color;
     border-radius: 3px;
   }
   &__label,
   &__icon {
-    font-size: 0.8rem;
-    line-height: 1;
+    font-size: 1rem;
   }
   &__label,
   &__option {
@@ -23,7 +23,7 @@
     padding: 0.5rem 1rem;
     color: #343434;
     &:active {
-      transform: scale(0.9);
+      transform: scale(0.96);
     }
   }
   &__icon {
@@ -41,7 +41,6 @@
     }
   }
   &__option {
-    padding: 0.5rem 1rem;
     &--default {
       padding: 0.5rem 1rem;
       &:hover {

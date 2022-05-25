@@ -5,6 +5,9 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import Label from '../text/label';
 import PropertyInjector from '../helpers/property-injector';
 
+import './style.less';
+import useOutsideClick from "../../hooks/outside-click";
+
 export default ({
     labelText,
     options = [],
@@ -16,6 +19,7 @@ export default ({
 }) => {
     const [optionsShown, setOptionsShown] = useState(false);
     const labelRef = useRef(null);
+    const rootRef = useRef(null);
 
     const toggleOptions = () => setOptionsShown(!optionsShown);
     const hideOptions = () => setOptionsShown(false);
@@ -25,12 +29,14 @@ export default ({
         closeWhenOptionClicked && hideOptions();
     };
 
+    useOutsideClick([rootRef, optionsShown], hideOptions);
     const OptionComponent = optionComponent || DefaultDropdownOption;
 
     const needToShowOptions = () => optionsShown && options.length;
     return (
         <div
             className='ui__dropdown'
+            ref={rootRef}
             onMouseEnter={showOptionsWhenHover ? showOptions : null}
             onMouseLeave={showOptionsWhenHover ? hideOptions : null}
             {...rest}>
