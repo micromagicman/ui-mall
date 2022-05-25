@@ -15,6 +15,8 @@ import {ComponentLoadable, FilteredLoadable, Spinner} from './component/loadable
 import Modal, {ConfirmModal, InfoModal} from './component/modal';
 import Tree from './component/tree';
 import Multitab from './component/multitab';
+import Dropdown from './component/dropdown';
+import PropertyInjector from './component/helpers/property-injector';
 
 export {
     // constants
@@ -23,5 +25,5 @@ export {
     Button, CheckBox, TextInput, PasswordInput, TextArea, FileUploader, Label,
     Form, FormLine, FilteredLoadable, ComponentLoadable, Spinner, Modal,
     ConfirmModal, InfoModal, EditableLabel, Accordion, Select, RadioGroup,
-    Arrow, Check, Tree, Multitab, Search
+    Arrow, Check, Tree, Multitab, Search, PropertyInjector, Dropdown
 };
