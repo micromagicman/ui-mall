@@ -32,14 +32,14 @@ export default ({values, activeId, onChange, optionComponent, className, ...rest
              onClick={toggleExpand}
              ref={rootRef}
              {...rest}>
-            <div className='ui__select-head'>
+            <div className='ui__select__head'>
                 <Arrow color='#343434' direction={isExpanded ? 'up' : 'down'}/>
                 <OptionComponent {...selectedItem}
                                  onClick={() => changeSelected(selectedItem.id)}/>
             </div>
-            <div className='ui__select-options'>
+            <div className='ui__select__options'>
                 {options.map((v) =>
-                    <div className='ui__select-option'
+                    <div className='ui__select__option'
                          onClick={() => changeSelected(v.id)}
                          key={v.id}>
                         <OptionComponent {...v} />

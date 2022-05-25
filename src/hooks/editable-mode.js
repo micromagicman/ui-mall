@@ -1,21 +1,25 @@
 import {useState} from 'react';
 
-export default function ({editableText, onSave}) {
+export default ({ editableText, onSave = () => {} }) => {
     const [text, changeText] = useState(editableText);
+    const [history, setHistory] = useState([editableText]);
     const [editMode, toggleEditMode] = useState(false);
 
     const save = () => {
         toggleEditMode(false);
-        'function' === typeof onSave && onSave(editableText);
+        onSave(text);
+        setHistory([...history, text]);
     };
 
     const cancel = () => {
         toggleEditMode(false);
-        changeText(editableText);
+        changeText(lastSavedText());
     };
 
+    const lastSavedText = () => history[history.length - 1];
+
     return [
-        {text, editMode},
-        {save, cancel, changeText, toggleEditMode}
+        { text, editMode },
+        { save, cancel, changeText, toggleEditMode }
     ];
 };

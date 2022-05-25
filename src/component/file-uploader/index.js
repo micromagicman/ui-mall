@@ -11,7 +11,7 @@ export default ({fileConsumer, ...rest}) => {
     }, []);
     const {getRootProps, getInputProps} = useDropzone({onDrop});
     return (
-        <div className='ui__file-uploader'
+        <div className='ui__file__uploader'
              {...getRootProps()}
              {...rest}>
             <input {...getInputProps()} />
