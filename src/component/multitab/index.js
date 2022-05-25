@@ -22,7 +22,7 @@ export default ({activeTab, onTabChange, children, ...rest}) => {
 };
 
 const TabPane = ({activeTabChecker, children, ...rest}) => (
-    <div className='ui__miltitab-tab-pane' {...rest}>
+    <div className='ui__miltitab__tab__pane' {...rest}>
         {Children.map(children, (child, i) => (
             <Tab active={activeTabChecker(child.props['tabName'])} key={i}>
                 {child}
@@ -32,13 +32,13 @@ const TabPane = ({activeTabChecker, children, ...rest}) => (
 );
 
 const MultitabHeader = ({activeTabChecker, tabNames, onTabClick, ...rest}) => (
-    <div className='ui__multitab-header'>
+    <div className='ui__multitab__header'>
         {tabNames.map((tn, i) => (
             <div
                 className={
                     classNames(
-                        'ui__multitab-tab',
-                        {'ui__multitab-tab--active': activeTabChecker(tn)}
+                        'ui__multitab__tab',
+                        {'ui__multitab__tab--active': activeTabChecker(tn)}
                     )
                 }
                 onClick={() => onTabClick(tn)}
@@ -54,8 +54,8 @@ const Tab = ({active, children, ...rest}) => (
     <div
         className={
             classNames(
-                'ui__multitab-tab-content',
-                {'ui__multitab-tab-content--active': active}
+                'ui__multitab__tab__content',
+                {'ui__multitab__tab__content--active': active}
             )
         }
         {...rest}>

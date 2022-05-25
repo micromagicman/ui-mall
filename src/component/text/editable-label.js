@@ -1,4 +1,6 @@
 import React from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCheck, faXmark} from '@fortawesome/free-solid-svg-icons';
 
 import {TextInput} from '../input';
 import Label from './label';
@@ -13,26 +15,31 @@ export default ({children, onSave, ...rest}) => {
         {save, cancel, changeText, toggleEditMode}
     ] = useEditableMode({editableText: children, onSave});
 
-    if (editMode) {
+    if (!editMode) {
         return (
-            <div className='ui__editable-input' {...rest}>
-                <TextInput autoFocus
-                           value={text}
-                           onBlur={save}
-                           onChange={changeText}/>
-                <div className='ui__editable-controls'>
-                    <Button onClick={save}>OK</Button>
-                    <Button onClick={cancel}>Cancel</Button>
-                </div>
-            </div>
+            <Label
+                className='ui__editable__label'
+                onClick={() => toggleEditMode(true)}
+                {...rest}>
+                {text}
+            </Label>
         );
     }
 
     return (
-        <Label className='ui__editable-label'
-               onClick={() => toggleEditMode(true)}
-               {...rest}>
-            {children}
-        </Label>
+        <div className='ui__editable__input' {...rest}>
+            <TextInput
+                autoFocus
+                value={text}
+                onChange={(_, newText) => changeText(newText)}/>
+            <div className='ui__editable__controls'>
+                <Button onClick={save}>
+                    <FontAwesomeIcon icon={faCheck}/>
+                </Button>
+                <Button onClick={cancel}>
+                    <FontAwesomeIcon icon={faXmark}/>
+                </Button>
+            </div>
+        </div>
     );
 };

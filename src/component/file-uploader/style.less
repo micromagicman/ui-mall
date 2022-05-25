@@ -1,18 +1,20 @@
 @uploader-color: #03a678;
 
-.ui__file-uploader {
-  cursor: pointer;
-  border-radius: 3px;
-  background-color: rgba(3, 166, 120, .25);
-  padding: 2rem;
-  border: 2px dashed @uploader-color;
+.ui__file {
+  &__uploader {
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: rgba(3, 166, 120, .25);
+    padding: 2rem;
+    border: 2px dashed @uploader-color;
 
-  &:hover {
-    background-color: rgba(3, 166, 120, .45);
-  }
+    &:hover {
+      background-color: rgba(3, 166, 120, .45);
+    }
 
-  span {
-    color: darken(@uploader-color, 10%);
-    text-transform: uppercase;
+    span {
+      color: darken(@uploader-color, 10%);
+      text-transform: uppercase;
+    }
   }
 }

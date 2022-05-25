@@ -24,8 +24,8 @@ const TreeNode = ({data, children, expanded, nodeComponent: NodeComponent}) => {
     };
 
     const nodeComponentClassAttr = classNames(
-        'ui__tree-node-component',
-        {'ui__tree-node-component--expand': isExpanded}
+        'ui__tree__node__component',
+        {'ui__tree__node__component--expand': isExpanded}
     );
 
     return (
@@ -35,7 +35,7 @@ const TreeNode = ({data, children, expanded, nodeComponent: NodeComponent}) => {
                 expanded={isExpanded}
                 {...data}/>
             {isExpanded && (
-                <div className='ui__tree-subnodes'>
+                <div className='ui__tree__subnodes'>
                     {children && children.map((n, i) => (
                         <TreeNode nodeComponent={NodeComponent} key={i} {...n} />
                     ))}

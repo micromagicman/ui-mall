@@ -6,7 +6,7 @@ import Label from '../text/label';
 import PropertyInjector from '../helpers/property-injector';
 
 import './style.less';
-import useOutsideClick from "../../hooks/outside-click";
+import useOutsideClick from '../../hooks/outside-click';
 
 export default ({
     labelText,

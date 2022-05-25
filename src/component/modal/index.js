@@ -7,17 +7,17 @@ import Label from '../text/label';
 const Modal = ({shown, title, children, className, ...rest}) => {
     const modalClassNames = classNames(className, 'ui__modal');
     const backgroundClassNames = classNames(
-        'ui__modal-background',
-        {'ui__modal-background--shown': shown}
+        'ui__modal__background',
+        {'ui__modal__background--shown': shown}
     );
     return (
         <div className={backgroundClassNames}>
             <div className={modalClassNames}
                  {...rest}>
-                <header className='ui__modal-header'>
+                <header className='ui__modal__header'>
                     {title && <Label>{title}</Label>}
                 </header>
-                <div className='ui__modal-content'>
+                <div className='ui__modal__content'>
                     {children}
                 </div>
             </div>

@@ -9,17 +9,17 @@ import './style.less';
 const DEFAULT_NOT_FOUND_TEXT = 'Совпадений не найдено';
 
 const SelectedMatch = ({text, ...rest}) =>
-    <div className='ui__search-selection' {...rest}>
+    <div className='ui__search__selection' {...rest}>
         <Label>{text}</Label>
     </div>
 
 export default ({
-                    matchesProvider,
-                    onMatchClick = () => {},
-                    onMatchSelectionReset = () => {},
-                    notFoundText = DEFAULT_NOT_FOUND_TEXT,
-                    MatchComponent = DefaultMatchComponent
-                }) => {
+    matchesProvider,
+    onMatchClick = () => {},
+    onMatchSelectionReset = () => {},
+    notFoundText = DEFAULT_NOT_FOUND_TEXT,
+    MatchComponent = DefaultMatchComponent
+}) => {
     const [query, changeQuery] = useState(null);
     const [matches, matchesChange] = useState([]);
     const [loading, toggleLoading] = useState(false);
@@ -63,7 +63,7 @@ export default ({
 
     return (
         <div className='ui__search'>
-            <div className='ui__search-input'>
+            <div className='ui__search__input'>
                 <TextInput disabled={!!matchSelection} value={query} onChange={onInputTextChange}/>
                 {matchSelection && (
                     <SelectedMatch
@@ -71,7 +71,7 @@ export default ({
                         {...matchSelection} />
                 )}
             </div>
-            {query && <div className='ui__search-matches'>{renderMatches()}</div>}
+            {query && <div className='ui__search__matches'>{renderMatches()}</div>}
         </div>
     );
 };

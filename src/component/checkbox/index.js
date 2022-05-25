@@ -7,12 +7,12 @@ import Label from '../text/label';
 
 import './style.less';
 
-export default ({label, children, checked, disabled, onChange, ...rest}) => {
+export default ({label, children, checked, disabled, onChange = () => {}, ...rest}) => {
     const [checkedState, onCheckToggle] = useState(!!checked);
 
     const onChangeHandler = () => {
         onCheckToggle(!checkedState);
-        ('function' === typeof onChange) && onChange(!checkedState);
+        onChange(!checkedState);
     };
 
     const className = classNames(

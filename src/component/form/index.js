@@ -8,14 +8,14 @@ import {FilteredLoadable} from '../loadable';
 import './style.less';
 
 export default ({
-                    disabled, onSubmit, onDelete, loading, children,
-                    saveText = 'Сохранить', deleteText = 'Удалить',
-                    className, ...rest
-                }) => (
+    disabled, onSubmit, onDelete, loading, children,
+    saveText = 'Сохранить', deleteText = 'Удалить',
+    className, ...rest
+}) => (
     <FilteredLoadable loading={loading}>
         <div className={classNames('ui__form', className)} {...rest}>
             {children}
-            <div className='ui__form-controls'>
+            <div className='ui__form__controls'>
                 <Button disabled={disabled}
                         onClick={onSubmit}>
                     {saveText}
@@ -31,11 +31,11 @@ export default ({
 );
 
 export const FormLine = ({caption, children, className, ...rest}) => (
-    <div className={classNames('ui__form-line', className)}>
-        <div className='ui__form-line-level'>
+    <div className={classNames('ui__form__line', className)}>
+        <div className='ui__form__line__level'>
             <Label>{caption}</Label>
         </div>
-        <div className='ui__form-line-level'>
+        <div className='ui__form__line__level'>
             {children}
         </div>
     </div>

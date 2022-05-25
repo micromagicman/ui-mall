@@ -6,27 +6,27 @@
 }
 
 .ui__editable {
-  &-label,
-  &-input {
-    display: block;
+  &__label,
+  &__input {
+    display: inline-block;
     position: relative;
     cursor: pointer;
   }
 
-  &-label:hover {
+  &__label,
+  &__input > .ui__input {
+    font-size: 2rem;
+  }
+
+  &__label:hover {
     background-color: #dedede;
   }
 
-  &-controls {
+  &__controls {
     z-index: 2000;
     position: absolute;
     left: 0;
     animation: controls-animation 0.3s ease;
-  }
-
-  &-input .ui__input {
-    display: block;
-    width: 100%;
   }
 }
 
