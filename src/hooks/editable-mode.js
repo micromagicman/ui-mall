@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-export default ({ editableText, onSave = () => {} }) => {
+export default function useEditableMode({ editableText, onSave = () => {} }) {
     const [text, changeText] = useState(editableText);
     const [history, setHistory] = useState([editableText]);
     const [editMode, toggleEditMode] = useState(false);

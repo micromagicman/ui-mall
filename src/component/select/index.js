@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 
 import Arrow from '../graphics/arrow';
 import Label from '../text/label';
-import useExpandStyle from '../../hooks/expanded';
+import useExpanded from '../../hooks/expanded';
 import useSingleChoice from '../../hooks/single-choice';
 import useOutsideClick from '../../hooks/outside-click';
 
@@ -23,7 +23,7 @@ const shiftSelectedItem = (values, searchId) => {
 export default ({values, activeId, onChange, optionComponent, className, ...rest}) => {
     const rootRef = useRef(null);
     const [selectedId, changeSelected] = useSingleChoice(activeId, onChange);
-    const [{classAttr, isExpanded}, toggleExpand] = useExpandStyle({expanded: false, mainClassName: 'ui__select', className});
+    const [{classAttr, isExpanded}, toggleExpand] = useExpanded({expanded: false, mainClassName: 'ui__select', className});
     const OptionComponent = optionComponent || DefaultOptionComponent;
     const [selectedItem, ...options] = shiftSelectedItem(values, selectedId);
     useOutsideClick([rootRef, isExpanded], () => isExpanded && toggleExpand());

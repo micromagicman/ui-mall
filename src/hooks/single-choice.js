@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-export default function (activeId, onChange) {
+export default function useSingleChoice(activeId, onChange) {
     const [active, changeActive] = useState(activeId);
     const change = (newActiveId) => {
         changeActive(newActiveId);

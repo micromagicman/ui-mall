@@ -1,4 +1,4 @@
-import Button, {BUTTON_TYPES} from './component/button';
+import Button from './component/button';
 import Label from './component/text/label';
 import EditableLabel from './component/text/editable-label';
 import Accordion from './component/accordion';
@@ -12,18 +12,19 @@ import FileUploader from './component/file-uploader';
 import Search from './component/search';
 import Form, {FormLine} from './component/form';
 import {ComponentLoadable, FilteredLoadable, Spinner} from './component/loadable';
-import Modal, {ConfirmModal, InfoModal} from './component/modal';
+import {Modal, ConfirmModal, InfoModal} from './component/modal';
 import Tree from './component/tree';
 import Multitab from './component/multitab';
 import Dropdown from './component/dropdown';
 import PropertyInjector from './component/helpers/property-injector';
+import {useFlag, useKeyboardEvent, useOutsideClick, useSingleChoice, useEditableMode, useExpanded} from './hooks'
 
 export {
-    // constants
-    BUTTON_TYPES,
     // ui-components
     Button, CheckBox, TextInput, PasswordInput, TextArea, FileUploader, Label,
     Form, FormLine, FilteredLoadable, ComponentLoadable, Spinner, Modal,
     ConfirmModal, InfoModal, EditableLabel, Accordion, Select, RadioGroup,
-    Arrow, Check, Tree, Multitab, Search, PropertyInjector, Dropdown
+    Arrow, Check, Tree, Multitab, Search, PropertyInjector, Dropdown,
+    // hooks
+    useFlag, useKeyboardEvent, useExpanded, useEditableMode, useSingleChoice, useOutsideClick
 };

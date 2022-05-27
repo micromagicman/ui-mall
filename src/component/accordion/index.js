@@ -2,12 +2,12 @@ import React from 'react';
 
 import Arrow from '../graphics/arrow';
 import Label from '../text/label';
-import useExpandStyle from '../../hooks/expanded';
+import useExpanded from '../../hooks/expanded';
 
 import './style.less';
 
 export default ({title, children, expanded, className, ...rest}) => {
-    const [{classAttr, isExpanded}, toggleExpand] = useExpandStyle({
+    const [{classAttr, isExpanded}, toggleExpand] = useExpanded({
         expanded,
         mainClassName: 'ui__accordion',
         className
