@@ -2,36 +2,36 @@
 
 .ui__accordion {
 
-  &__header {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 0.5rem;
-    background-color: darken(@accordion-header-color, 5%);
-    border: 1px solid darken(@accordion-header-color, 8%);
+    &__header {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 0.5rem;
+        background-color: darken(@accordion-header-color, 5%);
+        border: 1px solid darken(@accordion-header-color, 8%);
 
-    border-radius: 2px;
-    color: #ffffff;
-    transition: 0.3s ease background-color;
+        border-radius: 2px;
+        color: #FFFFFF;
+        transition: 0.3s ease background-color;
 
-    & > .ui__label {
-      display: inline-block;
-      margin-left: 0.5rem;
-    }
-  }
-
-  &--expanded {
-    .ui__accordion-header {
-      background-color: @accordion-header-color;
-      border-color: darken(@accordion-header-color, 3%);
+        & > .ui__label {
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
     }
 
-    .ui__accordion-content {
-      overflow: visible;
-    }
-  }
+    &--expanded {
+        .ui__accordion-header {
+            background-color: @accordion-header-color;
+            border-color: darken(@accordion-header-color, 3%);
+        }
 
-  &__content {
-    overflow: hidden;
-  }
+        .ui__accordion-content {
+            overflow: visible;
+        }
+    }
+
+    &__content {
+        overflow: hidden;
+    }
 }

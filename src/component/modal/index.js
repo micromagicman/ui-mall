@@ -1,59 +1,97 @@
-import React from 'react';
-import classNames from 'classnames';
+import classNames       from 'classnames';
+import React            from 'react';
+import { createPortal } from 'react-dom';
+import useKeyboardEvent from '../../hooks/keyboard';
+import { pass }         from '../../util/function';
 
 import Button from '../button';
-import Label from '../text/label';
 
-const Modal = ({shown, title, children, className, ...rest}) => {
+import './style.less';
+
+const control = (text, onClick) => ({onClick, text});
+
+const Modal = ({title, children, className, ...rest}) => {
+    const needHead = () => title;
     const modalClassNames = classNames(className, 'ui__modal');
-    const backgroundClassNames = classNames(
-        'ui__modal__background',
-        {'ui__modal__background--shown': shown}
-    );
-    return (
-        <div className={backgroundClassNames}>
-            <div className={modalClassNames}
-                 {...rest}>
-                <header className='ui__modal__header'>
-                    {title && <Label>{title}</Label>}
-                </header>
-                <div className='ui__modal__content'>
-                    {children}
-                </div>
+    return createPortal(
+        <div className="ui__modal__background">
+            <div className={modalClassNames} {...rest}>
+                {needHead() && <ModalHead title={title}/>}
+                {children}
             </div>
-        </div>
+        </div>,
+        document.body
     );
 };
 
-export const ConfirmModal = ({confirmText, declineText, messageText, onConfirm, onDecline, ...rest}) => (
-    <Modal className='ui__modal--confirm'
-           {...rest}>
-        <div className='ui__modal-line'>
-            <p>{messageText}</p>
-        </div>
-        <div className='ui__modal-line'>
-            <Button onClick={onConfirm}>{confirmText}</Button>
-            <Button type='error'
-                    onClick={onDecline}>
-                {declineText}
-            </Button>
-        </div>
-    </Modal>
+const ConfirmModal = ({
+                          confirmText,
+                          declineText,
+                          messageText,
+                          onConfirm = pass,
+                          onDecline = pass,
+                          ...rest
+                      }) => (
+    <KeyboardClosable onEnter={onConfirm} onEscape={onDecline}>
+        <Modal className="ui__modal--confirm" {...rest}>
+            <ModalContent>
+                <p>{messageText}</p>
+            </ModalContent>
+            <ModalControls
+                controls={[
+                    control(declineText, onDecline),
+                    control(confirmText, onConfirm)
+                ]}
+            />
+        </Modal>
+    </KeyboardClosable>
 );
 
-export const InfoModal = ({messageText, closeText, className, onClose, type = 'info', ...rest}) => (
-    <Modal className={className('ui__modal--info', `ui__modal--info--${type}`)}
-           {...rest}>
-        <div className='ui__modal-line'>
-            <p>{messageText}</p>
-        </div>
-        <div className='ui__modal-line'>
-            <Button onClick={onClose}
-                    type={type}>
-                {closeText}
-            </Button>
-        </div>
-    </Modal>
+const InfoModal = ({
+                       messageText,
+                       closeText,
+                       onClose = pass,
+                       className,
+                       ...rest
+                   }) => (
+    <KeyboardClosable onEscape={onClose} onEnter={onClose}>
+        <Modal className="ui__modal--info" {...rest}>
+            <ModalContent>
+                <p>{messageText}</p>
+            </ModalContent>
+            <ModalControls controls={[control(closeText, onClose)]}/>
+        </Modal>
+    </KeyboardClosable>
 );
 
-export default Modal;
+const KeyboardClosable = ({
+                              children,
+                              onEscape = pass,
+                              onEnter = pass
+                          }) => {
+    useKeyboardEvent('Escape', onEscape);
+    useKeyboardEvent('Enter', onEnter);
+    return children;
+};
+
+const ModalContent = ({children, ...props}) => (
+    <div className="ui__modal__content" {...props}>
+        {children}
+    </div>
+);
+
+const ModalHead = ({title, ...props}) => (
+    <header className="ui__modal__header" {...props}>
+        {title && <h2 className="ui__modal__title">{title}</h2>}
+    </header>
+);
+
+const ModalControls = ({controls = [], ...props}) => (
+    <div className="ui__modal__controls" {...props}>
+        {controls.map((ctrl, index) => (
+            <Button key={index} {...ctrl} />
+        ))}
+    </div>
+);
+
+export { Modal, InfoModal, ConfirmModal };

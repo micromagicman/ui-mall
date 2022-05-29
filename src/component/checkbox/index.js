@@ -1,13 +1,21 @@
-import React, {useState} from 'react';
-import classNames from 'classnames';
+import classNames          from 'classnames';
+import React, { useState } from 'react';
+import { pass }            from '../../util/function';
+import Check               from '../graphics/check';
 
-import {CheckInput} from '../input';
-import Check from '../graphics/check';
-import Label from '../text/label';
+import { CheckInput } from '../input';
+import Label          from '../text/label';
 
 import './style.less';
 
-export default ({label, children, checked, disabled, onChange = () => {}, ...rest}) => {
+export default ({
+                    label,
+                    children,
+                    checked,
+                    disabled,
+                    onChange = pass,
+                    ...rest
+                }) => {
     const [checkedState, onCheckToggle] = useState(!!checked);
 
     const onChangeHandler = () => {

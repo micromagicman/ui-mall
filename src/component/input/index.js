@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {emptyIfAbsent} from '../../util/string';
+import { emptyIfAbsent } from '../../util/string';
 
 import './style.less';
 
@@ -16,19 +16,20 @@ const Input = ({value, onChange, name, type, ...rest}) => (
            {...rest}/>
 );
 
-const TextInput = ({...props}) => <Input type='text' {...props}/>;
+const TextInput = ({...props}) => <Input type="text" {...props}/>;
 
-const PasswordInput = ({value, onChange, ...rest}) => <Input type='password' {...rest}/>;
+const PasswordInput = ({value, onChange, ...rest}) => <Input
+    type="password" {...rest}/>;
 
 const CheckInput = ({checked, ...rest}) => (
-    <input type='checkbox'
+    <input type="checkbox"
            checked={checked}
            readOnly={true}
            {...rest}/>
 );
 
 const RadioInput = ({checked, ...rest}) => (
-    <Input type='radio'
+    <Input type="radio"
            checked={checked}
            {...rest}/>
 );
@@ -40,4 +41,4 @@ const TextArea = ({value, onChange, name, ...rest}) => (
               {...rest}/>
 );
 
-export {TextInput, PasswordInput, CheckInput, RadioInput, TextArea};
+export { TextInput, PasswordInput, CheckInput, RadioInput, TextArea };

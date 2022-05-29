@@ -1,11 +1,11 @@
-import babel from '@rollup/plugin-babel';
-import external from 'rollup-plugin-peer-deps-external';
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
-import postcss from 'rollup-plugin-postcss';
-import image from 'rollup-plugin-img';
-import del from 'rollup-plugin-delete';
+import babel        from '@rollup/plugin-babel';
 import autoprefixer from 'autoprefixer';
+import commonjs     from 'rollup-plugin-commonjs';
+import del          from 'rollup-plugin-delete';
+import image        from 'rollup-plugin-img';
+import resolve      from 'rollup-plugin-node-resolve';
+import external     from 'rollup-plugin-peer-deps-external';
+import postcss      from 'rollup-plugin-postcss';
 
 import pkg from './package.json';
 
@@ -62,5 +62,5 @@ export default {
             targets: ['dist/*']
         })
     ],
-    external: Object.keys(pkg.peerDependencies || {}),
+    external: Object.keys(pkg.peerDependencies || {})
 };

@@ -1,15 +1,15 @@
 import React from 'react';
 
 import useSingleChoice from '../../hooks/single-choice';
-import {RadioInput} from '../input';
-import Label from '../text/label';
+import { RadioInput }  from '../input';
+import Label           from '../text/label';
 
 import './style.less';
 
 export default ({values, activeId, onChange, ...rest}) => {
     const [active, changeActive] = useSingleChoice(activeId, onChange);
     return (
-        <div className='ui__radio-group' {...rest}>
+        <div className="ui__radio-group" {...rest}>
             {values.map((v) =>
                 <RadioButton
                     {...v}
@@ -22,10 +22,10 @@ export default ({values, activeId, onChange, ...rest}) => {
 };
 
 const RadioButton = ({text, id, active, onClick, ...rest}) => (
-    <div className='ui__radio-button'
+    <div className="ui__radio-button"
          onClick={() => onClick(id)}
          {...rest}>
-        <RadioInput className='ui__input--radio'
+        <RadioInput className="ui__input--radio"
                     readOnly
                     checked={active}/>
         <Label>{text}</Label>

@@ -1,75 +1,75 @@
-@checkbox-disabled-color: #8a8a8a;
+@checkbox-disabled-color: #8A8A8A;
 @checkbox-normal-color: #343434;
 
 .ui__checkbox {
-  display: inline-block;
-  position: relative;
-
-  * {
-    user-select: none;
-    cursor: pointer;
-  }
-
-  input {
-    display: none;
-  }
-
-  .ui__label {
+    display: inline-block;
     position: relative;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
 
-    &::before {
-      content: "";
-      display: inline-block;
-      margin-right: 0.5rem;
-      width: 1.5rem;
-      height: 1.5rem;
-      background-color: #ffffff;
-      border: 2px solid #878787;
-      border-radius: 2px;
-      box-shadow: 0 2px 2px -2px rgba(51, 51, 51, .75);
+    * {
+        user-select: none;
+        cursor: pointer;
     }
-  }
 
-  & > .ui__check {
-    position: absolute;
-    width: 1.2rem;
-    height: 1.2rem;
-    top: 0.25rem;
-    left: 0.25rem;
-    animation: scaleIn 0.3s ease;
-  }
-
-  &--checked input {
-    & + .ui__label {
-      &::before {
-        border-color: lighten(@checkbox-normal-color, 10%);
-      }
+    input {
+        display: none;
     }
-  }
 
-  &--disabled input {
-    & + .ui__label {
-      color: @checkbox-disabled-color;
+    .ui__label {
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
 
-      &::before {
-        background-color: lighten(@checkbox-disabled-color, 35%);
-        border-color: lighten(@checkbox-disabled-color, 15%);
-      }
+        &::before {
+            content: '';
+            display: inline-block;
+            margin-right: 0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #FFFFFF;
+            border: 2px solid #878787;
+            border-radius: 2px;
+            box-shadow: 0 2px 2px -2px rgba(51, 51, 51, .75);
+        }
     }
-  }
+
+    & > .ui__check {
+        position: absolute;
+        width: 1.2rem;
+        height: 1.2rem;
+        top: 0.25rem;
+        left: 0.25rem;
+        animation: scaleIn 0.3s ease;
+    }
+
+    &--checked input {
+        & + .ui__label {
+            &::before {
+                border-color: lighten(@checkbox-normal-color, 10%);
+            }
+        }
+    }
+
+    &--disabled input {
+        & + .ui__label {
+            color: @checkbox-disabled-color;
+
+            &::before {
+                background-color: lighten(@checkbox-disabled-color, 35%);
+                border-color: lighten(@checkbox-disabled-color, 15%);
+            }
+        }
+    }
 }
 
 @keyframes scaleIn {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.3);
-  }
-  100% {
-    transform: scale(1);
-  }
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

@@ -1,34 +1,34 @@
-@tab-selected-color: #00ccbf;
+@tab-selected-color: #00CCBF;
 
 .ui__multitab {
-  &__tab__content {
-    display: none;
+    &__tab__content {
+        display: none;
 
-    &--active {
-      display: block;
-    }
-  }
-
-  &__header {
-    padding: 1rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
-  &__tab {
-    box-sizing: border-box;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    border-bottom: 2px solid transparent;
-
-    &--active {
-      border-bottom-color: darken(@tab-selected-color, 6%);
-      color: darken(@tab-selected-color, 6%);
+        &--active {
+            display: block;
+        }
     }
 
-    &__pane {
-      padding: 0 1rem;
+    &__header {
+        padding: 1rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
     }
-  }
+
+    &__tab {
+        box-sizing: border-box;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-bottom: 2px solid transparent;
+
+        &--active {
+            border-bottom-color: darken(@tab-selected-color, 6%);
+            color: darken(@tab-selected-color, 6%);
+        }
+
+        &__pane {
+            padding: 0 1rem;
+        }
+    }
 }
