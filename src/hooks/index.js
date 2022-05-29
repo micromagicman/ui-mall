@@ -1,8 +1,15 @@
-import useFlag from "./flag";
-import useExpanded from "./expanded";
-import useEditableMode from "./editable-mode";
-import useSingleChoice from "./single-choice";
-import useKeyboardEvent from "./keyboard";
-import useOutsideClick from "./outside-click";
+import useEditableMode  from './editable-mode';
+import useExpanded      from './expanded';
+import useFlag          from './flag';
+import useKeyboardEvent from './keyboard';
+import useOutsideClick  from './outside-click';
+import useSingleChoice  from './single-choice';
 
-export {useFlag, useExpanded, useEditableMode, useSingleChoice, useKeyboardEvent, useOutsideClick};
+export {
+    useFlag,
+    useExpanded,
+    useEditableMode,
+    useSingleChoice,
+    useKeyboardEvent,
+    useOutsideClick
+};

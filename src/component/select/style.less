@@ -1,62 +1,62 @@
 .ui__select {
-  position: relative;
-  box-sizing: border-box;
-  display: inline-block;
-  max-width: 300px;
-  width: 300px;
-  cursor: pointer;
-
-  &__head {
-    box-sizing: border-box;
     position: relative;
-    background-color: #ffffff;
-    border: 1px solid #d7d7d7;
-    padding: 0.5rem 2rem 0.5rem 0.5rem;
-    border-radius: 2px;
-    box-shadow: 0 2px 2px -2px rgba(51, 51, 51, .75);
-
-    & > .ui__arrow {
-      position: absolute;
-      right: 0.5rem;
-      top: calc(50% - 0.5rem);
-    }
-
-    &:hover {
-      background-color: #fafafa;
-    }
-  }
-
-  &__options {
-    position: absolute;
-    z-index: 2000;
     box-sizing: border-box;
-    left: 0;
-    right: 0;
-    width: inherit;
-    opacity: 0;
-    display: none;
-    background-color: #ffffff;
-    border: 1px solid #efefef;
-    transition: 0.3s ease all;
-    border-radius: 2px;
-  }
+    display: inline-block;
+    max-width: 300px;
+    width: 100%;
+    cursor: pointer;
 
-  &--expanded {
-    & > .ui__select__options {
-      display: block;
-      top: 110%;
-      opacity: 1;
+    &__head {
+        overflow: hidden;
+        box-sizing: border-box;
+        position: relative;
+        background-color: #FFFFFF;
+        border: 1px solid #D7D7D7;
+        border-radius: 2px;
+        box-shadow: 0 2px 2px -2px rgba(51, 51, 51, 0.75);
+
+        &:hover {
+            background-color: #FAFAFA;
+        }
     }
-  }
 
-  &__option {
-    padding: 0.5rem 2rem 0.5rem 0.5rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    &:hover {
-      background-color: #dedede;
+    &__arrow {
+        position: absolute;
+        right: 0.5rem;
+        top: calc(50% - 0.5rem);
     }
-  }
+
+    &__options {
+        position: absolute;
+        z-index: 10000;
+        box-sizing: border-box;
+        left: 0;
+        right: 0;
+        width: inherit;
+        opacity: 0;
+        display: none;
+        background-color: #FFFFFF;
+        border: 1px solid #EFEFEF;
+        transition: 0.3s ease all;
+        border-radius: 2px;
+    }
+
+    &--expanded {
+        & > .ui__select__options {
+            display: block;
+            top: 110%;
+            opacity: 1;
+        }
+    }
+
+    &__option {
+        padding: 0.5rem 2rem 0.5rem 0.5rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        &:hover {
+            background-color: #DEDEDE;
+        }
+    }
 }

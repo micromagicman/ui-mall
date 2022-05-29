@@ -1,18 +1,23 @@
-import classNames from 'classnames';
-import React from 'react';
+import classNames  from 'classnames';
+import React       from 'react';
 import useExpanded from '../../hooks/expanded';
 
 import './style.less';
 
 export default ({nodes = [], nodeComponent = DefaultNodeComponent}) => (
-    <div className='ui__tree'>
+    <div className="ui__tree">
         {nodes.map((n, i) => (
             <TreeNode nodeComponent={nodeComponent} key={i} {...n} />
         ))}
     </div>
 );
 
-const TreeNode = ({data, children, expanded, nodeComponent: NodeComponent}) => {
+const TreeNode = ({
+                      data,
+                      children,
+                      expanded,
+                      nodeComponent: NodeComponent
+                  }) => {
     const [{classAttr, isExpanded}, toggleExpand] = useExpanded({
         expanded,
         mainClassName: 'ui__tree-node'
@@ -35,9 +40,10 @@ const TreeNode = ({data, children, expanded, nodeComponent: NodeComponent}) => {
                 expanded={isExpanded}
                 {...data}/>
             {isExpanded && (
-                <div className='ui__tree__subnodes'>
+                <div className="ui__tree__subnodes">
                     {children && children.map((n, i) => (
-                        <TreeNode nodeComponent={NodeComponent} key={i} {...n} />
+                        <TreeNode nodeComponent={NodeComponent}
+                                  key={i} {...n} />
                     ))}
                 </div>
             )}

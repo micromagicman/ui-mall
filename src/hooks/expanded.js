@@ -1,13 +1,13 @@
+import classNames   from 'classnames';
 import { useState } from 'react';
-import classNames from 'classnames';
 
-export default function useExpanded({ expanded, mainClassName, className }) {
+export default function useExpanded({expanded, mainClassName, className}) {
     const [isExpanded, toggleExpand] = useState(!!expanded);
     const classAttr = classNames(
         mainClassName,
-        { [`${mainClassName}--expanded`]: isExpanded },
+        {[`${mainClassName}--expanded`]: isExpanded},
         className
     );
     const toggle = () => toggleExpand(!isExpanded);
-    return [{ classAttr, isExpanded }, toggle];
+    return [{classAttr, isExpanded}, toggle];
 };

@@ -1,42 +1,42 @@
 .ui__label {
-  font-size: 1rem;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .ui__editable {
-  &__label,
-  &__input {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-  }
+    &__label,
+    &__input {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+    }
 
-  &__label,
-  &__input > .ui__input {
-    font-size: 2rem;
-  }
+    &__label,
+    &__input > .ui__input {
+        font-size: 2rem;
+    }
 
-  &__label:hover {
-    background-color: #dedede;
-  }
+    &__label:hover {
+        background-color: #DEDEDE;
+    }
 
-  &__controls {
-    z-index: 2000;
-    position: absolute;
-    left: 0;
-    animation: controls-animation 0.3s ease;
-  }
+    &__controls {
+        z-index: 2000;
+        position: absolute;
+        left: 0;
+        animation: controls-animation 0.3s ease;
+    }
 }
 
 @keyframes controls-animation {
-  0% {
-    top: 180%;
-    opacity: 0;
-  }
-  100% {
-    top: 100%;
-    opacity: 1;
-  }
+    0% {
+        top: 180%;
+        opacity: 0;
+    }
+    100% {
+        top: 100%;
+        opacity: 1;
+    }
 }

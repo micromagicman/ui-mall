@@ -1,7 +1,6 @@
-import React, {Children} from 'react';
-
-import classNames from 'classnames';
-import useSingleChoice from '../../hooks/single-choice';
+import classNames          from 'classnames';
+import React, { Children } from 'react';
+import useSingleChoice     from '../../hooks/single-choice';
 
 import './style.less';
 
@@ -11,7 +10,7 @@ export default ({activeTab, onTabChange, children, ...rest}) => {
     const propertyMapper = (propName) => (child) => child.props[propName];
     const tabNames = Children.map(children, propertyMapper('tabname'));
     return (
-        <div className='ui__multitab' {...rest}>
+        <div className="ui__multitab" {...rest}>
             <MultitabHeader
                 activeTabChecker={isActiveTab}
                 onTabClick={changeTab}
@@ -22,9 +21,10 @@ export default ({activeTab, onTabChange, children, ...rest}) => {
 };
 
 const TabPane = ({activeTabChecker, children, ...rest}) => (
-    <div className='ui__miltitab__tab__pane' {...rest}>
+    <div className="ui__miltitab__tab__pane" {...rest}>
         {Children.map(children, (child, i) => (
-            <Tab active={activeTabChecker(child.props['tabName'])} key={i}>
+            <Tab active={activeTabChecker(child.props['tabName'])}
+                 key={i}>
                 {child}
             </Tab>
         ))}
@@ -32,7 +32,7 @@ const TabPane = ({activeTabChecker, children, ...rest}) => (
 );
 
 const MultitabHeader = ({activeTabChecker, tabNames, onTabClick, ...rest}) => (
-    <div className='ui__multitab__header'>
+    <div className="ui__multitab__header">
         {tabNames.map((tn, i) => (
             <div
                 className={

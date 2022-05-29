@@ -1,17 +1,18 @@
-import React from "react";
-import {createPortal} from "react-dom";
-import classNames from "classnames";
+import classNames       from 'classnames';
+import React            from 'react';
+import { createPortal } from 'react-dom';
+import useKeyboardEvent from '../../hooks/keyboard';
+import { pass }         from '../../util/function';
 
-import Button from "../button";
+import Button from '../button';
 
-import "./style.less";
-import useKeyboardEvent from "../../hooks/keyboard";
+import './style.less';
 
 const control = (text, onClick) => ({onClick, text});
 
 const Modal = ({title, children, className, ...rest}) => {
     const needHead = () => title;
-    const modalClassNames = classNames(className, "ui__modal");
+    const modalClassNames = classNames(className, 'ui__modal');
     return createPortal(
         <div className="ui__modal__background">
             <div className={modalClassNames} {...rest}>
@@ -24,13 +25,13 @@ const Modal = ({title, children, className, ...rest}) => {
 };
 
 const ConfirmModal = ({
-      confirmText,
-      declineText,
-      messageText,
-      onConfirm = () => {},
-      onDecline = () => {},
-      ...rest
-}) => (
+                          confirmText,
+                          declineText,
+                          messageText,
+                          onConfirm = pass,
+                          onDecline = pass,
+                          ...rest
+                      }) => (
     <KeyboardClosable onEnter={onConfirm} onEscape={onDecline}>
         <Modal className="ui__modal--confirm" {...rest}>
             <ModalContent>
@@ -47,12 +48,12 @@ const ConfirmModal = ({
 );
 
 const InfoModal = ({
-   messageText,
-   closeText,
-   onClose = () => {},
-   className,
-   ...rest
-}) => (
+                       messageText,
+                       closeText,
+                       onClose = pass,
+                       className,
+                       ...rest
+                   }) => (
     <KeyboardClosable onEscape={onClose} onEnter={onClose}>
         <Modal className="ui__modal--info" {...rest}>
             <ModalContent>
@@ -64,12 +65,12 @@ const InfoModal = ({
 );
 
 const KeyboardClosable = ({
-  children,
-  onEscape = () => {},
-  onEnter = () => {}
-}) => {
-    useKeyboardEvent("Escape", onEscape);
-    useKeyboardEvent("Enter", onEnter);
+                              children,
+                              onEscape = pass,
+                              onEnter = pass
+                          }) => {
+    useKeyboardEvent('Escape', onEscape);
+    useKeyboardEvent('Enter', onEnter);
     return children;
 };
 
@@ -93,4 +94,4 @@ const ModalControls = ({controls = [], ...props}) => (
     </div>
 );
 
-export {Modal, InfoModal, ConfirmModal};
+export { Modal, InfoModal, ConfirmModal };
