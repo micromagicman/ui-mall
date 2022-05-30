@@ -12,12 +12,7 @@ export default ({nodes = [], nodeComponent = DefaultNodeComponent}) => (
     </div>
 );
 
-const TreeNode = ({
-                      data,
-                      children,
-                      expanded,
-                      nodeComponent: NodeComponent
-                  }) => {
+const TreeNode = ({data, children, expanded, nodeComponent: NodeComponent}) => {
     const [{classAttr, isExpanded}, toggleExpand] = useExpanded({
         expanded,
         mainClassName: 'ui__tree-node'
@@ -51,8 +46,8 @@ const TreeNode = ({
     );
 };
 
-const DefaultNodeComponent = ({className, text, expanded, ...rest}) => (
+const DefaultNodeComponent = ({className, label, expanded, ...rest}) => (
     <span className={className} {...rest}>
-        {text}
+        {label}
     </span>
 );

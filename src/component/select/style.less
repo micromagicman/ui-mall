@@ -1,3 +1,6 @@
+@import '../../less/variables';
+@import '../../less/mixins';
+
 .ui__select {
     position: relative;
     box-sizing: border-box;
@@ -6,14 +9,21 @@
     width: 100%;
     cursor: pointer;
 
+    &__head,
+    &__options {
+        .rect();
+        box-shadow: 0 2px 2px -2px rgba(51, 51, 51, 0.75);
+    }
+
+    &__head,
+    &__option {
+        padding: 0.5rem 0.8rem;
+    }
+
     &__head {
         overflow: hidden;
         box-sizing: border-box;
         position: relative;
-        background-color: #FFFFFF;
-        border: 1px solid #D7D7D7;
-        border-radius: 2px;
-        box-shadow: 0 2px 2px -2px rgba(51, 51, 51, 0.75);
 
         &:hover {
             background-color: #FAFAFA;
@@ -21,6 +31,7 @@
     }
 
     &__arrow {
+        color: @default-text-color;
         position: absolute;
         right: 0.5rem;
         top: calc(50% - 0.5rem);
@@ -38,7 +49,6 @@
         background-color: #FFFFFF;
         border: 1px solid #EFEFEF;
         transition: 0.3s ease all;
-        border-radius: 2px;
     }
 
     &--expanded {
@@ -50,13 +60,12 @@
     }
 
     &__option {
-        padding: 0.5rem 2rem 0.5rem 0.5rem;
         display: flex;
         justify-content: flex-start;
         align-items: center;
 
         &:hover {
-            background-color: #DEDEDE;
+            background-color: darken(@white-color, 7%);
         }
     }
 }

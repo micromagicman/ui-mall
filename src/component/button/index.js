@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 
 import './style.less';
 
-export default ({onClick, text, disabled, children, className, ...rest}) => {
+export default ({onClick, label, disabled, children, className, ...rest}) => {
     const textReference = useRef(null);
     const classAttr = classNames(
         'ui__button',
@@ -16,7 +16,7 @@ export default ({onClick, text, disabled, children, className, ...rest}) => {
             className={classAttr}
             onClick={() => !disabled && onClick()}
             {...rest}>
-            <span ref={textReference}>{text || children}</span>
+            <span ref={textReference}>{label || children}</span>
         </button>
     );
 };

@@ -1,21 +1,24 @@
+@import '../../less/common';
+
 @button-normal-background-color: #DEDEDE;
-@button-disabled-background-color: #6A6A6A;
+@button-disabled-background-color: #C9C9C9;
 @button-normal-text-color: #343434;
-@button-disabled-text-color: #8A8A8A;
+@button-disabled-text-color: #6A6A6A;
 
 .ui__button {
     margin: 0;
-    border-radius: 2px;
+    border-radius: 5px;
     font-size: 0.8rem;
-    border: none;
     outline: none;
     padding: 0.5rem;
     cursor: pointer;
     box-shadow: 0 5px 5px -5px rgba(51, 51, 51, 0.75);
     color: @button-normal-text-color;
+    border: 1px solid @default-border-color;
 
     &--disabled {
         background-color: @button-disabled-background-color;
+        border-color: darken(@default-border-color, 15%);
         color: @button-disabled-text-color;
         cursor: auto;
     }

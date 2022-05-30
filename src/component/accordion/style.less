@@ -1,32 +1,38 @@
-@accordion-header-color: #3F7C85;
+@import '../../less/common';
 
 .ui__accordion {
 
     &__header {
+        .rect();
         display: flex;
         align-items: center;
         cursor: pointer;
-        padding: 0.5rem;
-        background-color: darken(@accordion-header-color, 5%);
-        border: 1px solid darken(@accordion-header-color, 8%);
-
-        border-radius: 2px;
-        color: #FFFFFF;
+        padding: 0.5rem 1rem;
+        color: @default-text-color;
         transition: 0.3s ease background-color;
+        background-color: darken(@white-color, 7%);
 
         & > .ui__label {
-            display: inline-block;
-            margin-left: 0.5rem;
+            margin-left: 0.8rem;
+        }
+
+        svg {
+            transition: 0.3s ease transform;
+            color: @default-text-color;
         }
     }
 
     &--expanded {
-        .ui__accordion-header {
-            background-color: @accordion-header-color;
-            border-color: darken(@accordion-header-color, 3%);
+
+        .ui__accordion__header {
+            background-color: @white-color;
+
+            svg {
+                transform: rotate(90deg);
+            }
         }
 
-        .ui__accordion-content {
+        .ui__accordion__content {
             overflow: visible;
         }
     }

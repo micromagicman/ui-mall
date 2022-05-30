@@ -37,7 +37,10 @@ export default ({
     });
     const [selectedItem, ...selectOptions] = shiftSelectedItem(options, selectedId);
     OptionComponent = OptionComponent || DefaultOptionComponent;
-    useOutsideClick([rootRef, isExpanded], () => isExpanded && toggleExpand());
+    useOutsideClick(
+        [rootRef, isExpanded],
+        () => isExpanded && toggleExpand()
+    );
     return (
         <div className={classAttr} onClick={toggleExpand}
              ref={rootRef} {...rest}>
@@ -65,11 +68,7 @@ export default ({
     );
 };
 
-const SelectedOption = ({
-                            value,
-                            onClick,
-                            optionComponent: OptionComponent
-                        }) => (
+const SelectedOption = ({value, onClick, optionComponent: OptionComponent}) => (
     <OptionComponent {...value} onClick={onClick}/>
 );
 
