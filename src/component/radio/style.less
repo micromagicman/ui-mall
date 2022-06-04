@@ -1,0 +1,55 @@
+@import '../../less/common';
+
+@checked-color: #565656;
+@disabled-color: #8A8A8A;
+@button-height: 1.7rem;
+
+.ui__radio {
+    &__group {
+        padding: 0.5rem;
+    }
+
+    &__check {
+        position: relative;
+        width: @button-height;
+        height: @button-height;
+        display: inline-block;
+        border: 1px solid darken(@default-border-color, 10%);
+        border-radius: 50%;
+        text-align: center;
+        line-height: @button-height;
+        svg {
+            animation: scaleIn .3s @bounce-timing-function;
+        }
+    }
+
+    &__button {
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        height: @button-height;
+
+        &:not(:last-of-type) {
+            margin-bottom: @button-height;
+        }
+
+        & .ui__label {
+            padding-left: 1rem;
+            color: @default-text-color;
+        }
+
+        &--checked {
+            .ui__radio__check {
+                border-color: @checked-color;
+            }
+        }
+
+        &--disabled {
+            .ui__radio__check {
+                border-color: lighten(@disabled-color, 15%);
+                background-color: lighten(@disabled-color, 35%);
+            }
+        }
+    }
+}

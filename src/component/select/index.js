@@ -1,77 +1,118 @@
-import { faAngleDown }                                   from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon }                               from '@fortawesome/react-fontawesome';
-import React, { useRef }                                 from 'react';
-import { useExpanded, useSingleChoice, useOutsideClick } from '../../hooks';
-import { pass }                                          from '../../util/function';
+import {faAngleDown}                from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon}            from '@fortawesome/react-fontawesome';
+import React, {
+  createContext,
+  useCallback,
+  useRef,
+  Children,
+  useContext,
+  useState,
+}                                   from 'react';
+import {
+  useExpanded,
+  useOutsideClick,
+}                                   from '../../hooks';
+import {pass}                       from '../../util/function';
+import {validateComponentChildType} from '../../util/react';
 
 import Label from '../text/label';
 
 import './style.less';
 
-const shiftSelectedItem = (values, searchId) => {
-    let [selectedItem, others] = [null, []];
-    for (let i = 0; i < values.length; i++) {
-        if (searchId === values[i].id) {
-            selectedItem = values[i];
-        } else {
-            others.push(values[i]);
-        }
-    }
-    return [selectedItem, ...others];
-};
+const SelectContext = createContext(null);
 
-export default ({
-                    options,
-                    activeId,
-                    onChange = pass,
-                    optionComponent: OptionComponent,
-                    className,
-                    ...rest
-                }) => {
-    const rootRef = useRef(null);
-    const [selectedId, changeSelected] = useSingleChoice(activeId, onChange);
-    const [{classAttr, isExpanded}, toggleExpand] = useExpanded({
-        expanded: false,
-        mainClassName: 'ui__select',
-        className
-    });
-    const [selectedItem, ...selectOptions] = shiftSelectedItem(options, selectedId);
-    OptionComponent = OptionComponent || DefaultOptionComponent;
-    useOutsideClick(
-        [rootRef, isExpanded],
-        () => isExpanded && toggleExpand()
-    );
-    return (
-        <div className={classAttr} onClick={toggleExpand}
-             ref={rootRef} {...rest}>
-            <div className="ui__select__head">
-                <div className="ui__select__selected-option">
-                    <SelectedOption
-                        value={selectedItem}
-                        onClick={() => changeSelected(selectedItem.id)}
-                        optionComponent={OptionComponent}/>
-                </div>
-                <FontAwesomeIcon className="ui__select__arrow"
-                                 icon={faAngleDown}/>
-            </div>
-            <div className="ui__select__options">
-                {selectOptions.map((v) => (
-                    <div
-                        className="ui__select__option"
-                        onClick={() => changeSelected(v.id)}
-                        key={v.id}>
-                        <OptionComponent {...v} />
-                    </div>
-                ))}
-            </div>
+function Select({
+  selectedValue,
+  disabled,
+  onChange,
+  children,
+  ...rest
+}) {
+  const rootRef = useRef(null);
+  const [selected, select] = useState(selectedValue);
+  const [{classAttr, isExpanded}, toggleExpand] = useExpanded(false, 'ui__select');
+
+  const shiftSelectedItem = useCallback(
+      () =>
+          Children.toArray(children).reduce(
+              (acc, child) => {
+                validateComponentChildType(Select, child, SelectOption);
+                if (selected === child.props.value) {
+                  acc.head = child;
+                } else {
+                  acc.options.push(child);
+                }
+                return acc;
+              },
+              {head: null, options: []},
+          ),
+      [selected],
+  );
+
+  useOutsideClick(
+      [rootRef, isExpanded],
+      () => isExpanded && toggleExpand(),
+  );
+
+  const {head, options} = shiftSelectedItem();
+
+  return (
+      <div className={classAttr}
+           onClick={toggleExpand}
+           ref={rootRef}
+           {...rest}>
+        <div className="ui__select__head">
+          <div className="ui__select__selected-option">
+            {head.props.label || head.props.children}
+          </div>
+          <FontAwesomeIcon className="ui__select__arrow"
+                           icon={faAngleDown}/>
         </div>
-    );
+        <div className="ui__select__options">
+          <SelectContext.Provider value={{select, onChange}}>
+            {options}
+          </SelectContext.Provider>
+        </div>
+      </div>
+  );
+}
+
+function SelectOption({
+  value,
+  label,
+  optionComponent: OptionComponent,
+  children,
+  ...rest
+}) {
+  OptionComponent = OptionComponent || DefaultOptionComponent;
+  const {select, onChange} = useContext(SelectContext);
+
+  const onClickHandler = useCallback(
+      () => {
+        select(value);
+        onChange(value);
+      },
+      [value],
+  );
+
+  return (
+      <div className="ui__select__option"
+           onClick={onClickHandler}>
+        <OptionComponent {...rest}>{label || children}</OptionComponent>
+      </div>
+  );
+}
+
+function DefaultOptionComponent({value, children, ...rest}) {
+  return <Label{...rest}>{children}</Label>;
+}
+
+Select.defaultProps = {
+  selectedValue: 1,
+  onChange: pass,
 };
 
-const SelectedOption = ({value, onClick, optionComponent: OptionComponent}) => (
-    <OptionComponent {...value} onClick={onClick}/>
-);
-
-const DefaultOptionComponent = ({id, text}) => (
-    <Label data-id={id}>{text}</Label>
-);
+export {
+  Select,
+  SelectOption,
+};
